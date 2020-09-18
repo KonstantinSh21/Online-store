@@ -1,32 +1,69 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div>
+    <div class="wrapper-header">
+      <div class="wrapper-nav">
+        <div class="nav name">OXYGEN</div>
+        <Search class="search flex"/>
+        <router-link class="nav flex" to="/">Главная</router-link>
+        <router-link class="nav flex" to="/registration">Регистрация</router-link>
+        <router-link class="nav flex" to="/basket">Корзина</router-link>
+      </div>
     </div>
-    <router-view/>
+    <div class="wrapper-body">
+      <div class="body">
+        <router-view/>
+      </div>
+
+    </div>
   </div>
 </template>
 
+<script>
+import Search from "@/components/Header/ Search/Search";
+
+export default {
+  name:"App",
+  components: {
+    Search
+  }
+}
+
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+
+.wrapper-header{
+  max-width: 1470px;
+  min-width: 100%;
+  background-color: #cccccc;
+  height: 130px;
+}
+.wrapper-nav{
+  padding-top: 50px;
+  justify-content: center;
+  display: flex;
 }
 
-#nav {
-  padding: 30px;
+.nav {
+  text-decoration: none;
+  color: black;
+}
+.search{
+  height: 30px;
+  width: 25%;
+  background-color: #fff;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.wrapper-body{
+  min-width: 100%;
+  background-color: #cccccc;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.body{
+  margin: 0 auto;
+  max-width: 1470px;
 }
+
+
+
 </style>
