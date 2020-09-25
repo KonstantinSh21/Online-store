@@ -1,7 +1,7 @@
 <template>
-  <div>
-    Search
-  </div>
+
+  <input type="text" placeholder="Search"/>
+
 </template>
 
 <script>

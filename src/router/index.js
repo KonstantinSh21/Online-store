@@ -14,11 +14,13 @@ const routes = [
   },
   {
     path: '/registration',
+
     name: Registration,
     component: () => import('../components/Header/Nav/Registration.vue')
   },
   {
     path: '/basket',
+
     name: Basket,
     component: () => import('../components/Header/Nav/Basket.vue')
   }
