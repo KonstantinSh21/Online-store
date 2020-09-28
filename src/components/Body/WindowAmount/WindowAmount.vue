@@ -140,7 +140,7 @@ export default{
 .dropdown-content{
     display: none;
     position: absolute;
-    left: 11.1%;
+    left: 15.1%;
     background-color: #f1f1f1;
     min-width: 160px;
     z-index: 1;

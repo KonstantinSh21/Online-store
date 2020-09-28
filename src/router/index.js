@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Basket from '../components/Header/Nav/Basket.vue'
 import StoreWrapper from '../components/Header/Nav/StoreWrapper.vue'
-import Registration from '../components/Header/Nav/Registration.vue'
+import Registration from '../components/Header/Nav/AdminPanel.vue'
 
 Vue.use(VueRouter)
 
@@ -16,7 +16,7 @@ const routes = [
     path: '/registration',
 
     name: Registration,
-    component: () => import('../components/Header/Nav/Registration.vue')
+    component: () => import('../components/Header/Nav/AdminPanel.vue')
   },
   {
     path: '/basket',
