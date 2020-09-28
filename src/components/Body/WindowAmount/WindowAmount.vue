@@ -60,8 +60,7 @@ export default{
     props:[
         'openWindow',
         'newArrayBacket',
-        'Twists',
-        'Jeans',
+        'catalog',
         'itemClick'
     ],
     methods: {

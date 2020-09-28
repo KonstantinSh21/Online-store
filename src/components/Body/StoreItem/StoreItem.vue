@@ -2,8 +2,7 @@
   <div>
     <WindowAmount
      v-if="openWindow"
-     :Jeans='Jeans'
-     :Twists='Twists'
+     :catalog='catalog'
      :newArrayBacket='newArrayBacket'
      :openWindow='openWindow'
      :itemClick = 'itemClick'
@@ -12,50 +11,30 @@
      @exit='exit'
      />
 
+
+
     <div class="wrapper-storeItem">
       <div
-          v-for="(Jean) in this.Jeans"
-          v-bind:key="Jean.id"
-          v-bind:jean="Jean"
+          v-for="c in this.catalog"
+          v-bind:key="c.id"
+          v-bind:c="c"
           class="wrapper-item">
         <div class="item__wrapper">
           <img
               class="item__img"
-              v-bind:src="Jean.img"
+              v-bind:src="c.img"
           />
           <div class="item__name">
-            {{Jean.name}}
+            {{c.name}}
           </div>
           <div class="item__price">
-            {{Jean.price}}
+            {{c.price}}
           </div>
-          <button @click="openWindowAnoutn(Jean)" class="item__btn">
+          <button @click="openWindowAnoutn(c)" class="item__btn">
               Добавить в корзину
           </button>
         </div>
-    </div>
-
-    <div
-        v-for="(Twist) in this.Twists"
-        v-bind:key="Twist.id"
-        v-bind:jean="Twist"
-        class="wrapper-item">
-      <div class="item__wrapper">
-        <img
-            class="item__img"
-            v-bind:src="Twist.img"
-        />
-        <div class="item__name">
-          {{Twist.name}}
-        </div>
-        <div class="item__price">
-          {{Twist.price}}
-        </div>
-        <button @click="openWindowAnoutn(Twist)" class="item__btn">
-          Добавить в корзину
-        </button>
-      </div>
-    </div>
+     </div>
   </div>
 </div>
 
@@ -69,7 +48,7 @@ export default {
   components:{
     WindowAmount
   },
-  props: ["Twists", "Jeans", "newArrayBacket"],
+  props: ["catalog", "newArrayBacket"],
 
   data(){
     return{

@@ -1,8 +1,7 @@
 <template>
   <div>
     <Store
-        v-bind:Twists="Twists"
-        v-bind:Jeans="Jeans"
+        v-bind:catalog="catalog"
         v-bind:newArrayBacket="newArrayBacket"
     />
   </div>
@@ -15,7 +14,7 @@ import Store from "@/components/Body/Store/Store";
 export default {
   name: "StoreWrapper",
   components: {Store},
-  props:["newArrayBacket", "Jeans", "Twists"]
+  props:["newArrayBacket", "catalog"]
 }
 </script>
 

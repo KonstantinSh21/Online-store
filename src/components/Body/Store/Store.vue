@@ -2,10 +2,11 @@
   <div class="wrapper-store">
 
     <StoreItem
-        :Jeans="Jeans"
-        :Twists="Twists"
+        :catalog="catalog"
         :newArrayBacket="newArrayBacket"
     />
+    {{newArrayBacket}} 1{{catalog}}1
+
 
   </div>
 </template>
@@ -18,7 +19,7 @@ export default {
   components: {
     StoreItem
   },
-  props: ["Jeans", "Twists", "newArrayBacket",],
+  props: ["catalog", "newArrayBacket"],
 
 
 }
