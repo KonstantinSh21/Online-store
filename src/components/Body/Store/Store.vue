@@ -18,7 +18,7 @@ export default {
   components: {
     StoreItem
   },
-  props: ["Jeans", "Twists", "newArrayBacket"],
+  props: ["Jeans", "Twists", "newArrayBacket",],
 
 
 }

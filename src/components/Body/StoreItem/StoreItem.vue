@@ -1,25 +1,38 @@
 <template>
-  <div class="wrapper-storeItem">
-    <div
-        v-for="(Jean) in this.Jeans"
-        v-bind:key="Jean.id"
-        v-bind:jean="Jean"
-        class="wrapper-item">
-      <div class="item__wrapper">
-        <img
-            class="item__img"
-            v-bind:src="Jean.img"
-        />
-        <div class="item__name">
-          {{Jean.name}}
+  <div>
+    <WindowAmount
+     v-if="openWindow"
+     :Jeans='Jeans'
+     :Twists='Twists'
+     :newArrayBacket='newArrayBacket'
+     :openWindow='openWindow'
+     :itemClick = 'itemClick'
+
+     @addBacket='addBacket'
+     @exit='exit'
+     />
+
+    <div class="wrapper-storeItem">
+      <div
+          v-for="(Jean) in this.Jeans"
+          v-bind:key="Jean.id"
+          v-bind:jean="Jean"
+          class="wrapper-item">
+        <div class="item__wrapper">
+          <img
+              class="item__img"
+              v-bind:src="Jean.img"
+          />
+          <div class="item__name">
+            {{Jean.name}}
+          </div>
+          <div class="item__price">
+            {{Jean.price}}
+          </div>
+          <button @click="openWindowAnoutn(Jean)" class="item__btn">
+              Добавить в корзину
+          </button>
         </div>
-        <div class="item__price">
-          {{Jean.price}}
-        </div>
-        <button @click="addBacket(Jean)" class="item__btn">
-            Добавить в корзину
-        </button>
-      </div>
     </div>
 
     <div
@@ -38,24 +51,55 @@
         <div class="item__price">
           {{Twist.price}}
         </div>
-        <button @click="addBacket(Twist)" class="item__btn">
+        <button @click="openWindowAnoutn(Twist)" class="item__btn">
           Добавить в корзину
         </button>
       </div>
     </div>
   </div>
+</div>
+
 </template>
 
 <script>
+import WindowAmount from "@/components/Body/WindowAmount/WindowAmount"
+
 export default {
   name: "StoreItem",
+  components:{
+    WindowAmount
+  },
   props: ["Twists", "Jeans", "newArrayBacket"],
+
+  data(){
+    return{
+      openWindow : false,
+      itemClick: ''
+    }
+  },
+  
   methods:{
-      addBacket(item){
-        item.basket = true
-        this.$props.newArrayBacket.push(item)
-      }
-  }
+      openWindowAnoutn(item){
+        this.openWindow = true
+        this.itemClick = item
+      },
+
+      addBacket(){
+        console.log(this.itemClick)
+            if(this.itemClick.size === ''){
+                alert("Вы не выбрали размер")
+            }else {
+                this.itemClick.backet = true
+                this.openWindow = false
+                this.newArrayBacket.push(this.itemClick)
+                this.itemClick=''
+                console.log(this.newArrayBacket)
+            }
+        },
+        exit(){
+          this.openWindow = false
+        }
+    }
 }
 </script>
 
@@ -67,6 +111,7 @@ export default {
 }
 
 .wrapper-item {
+  border-radius: 10px;
   padding: 10px;
   flex: 0 0 186px;
   background-color: #fff;
@@ -93,7 +138,15 @@ export default {
   width: 100%;
   margin-top: 20px;
   height: 40px;
-
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: .8em 1em calc(.8em + 3px);
+  border-radius: 3px;
+  background: rgb(64,199,129);
+  box-shadow: 0 -3px rgb(53,167,110) inset;
+  transition: 0.2s;
+  border: none;
 }
 
 </style>

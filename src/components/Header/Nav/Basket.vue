@@ -2,8 +2,8 @@
   <div class="wrapper-basket">
 
     <div
-        v-for="(item) in newArrayBacket"
-        v-bind:key="item.id"
+        v-for="(item, index) in newArrayBacket"
+        v-bind:key="index"
         v-bind:item="item"
         class="wrapper-item">
       <div class="item__wrapper">
@@ -12,12 +12,15 @@
             v-bind:src="item.img"
         />
         <div class="item__name">
-          {{ item.name }}
+          {{ item.name }} <br/> {{item.size}}
+        </div>
+        <div class="item__name">
+          В количистве {{item.amount}} штук
         </div>
         <div class="item__price">
           {{ item.price }}
         </div>
-        <button class='item__btn' @click="delItem(item.id)">
+        <button class='item__btn' @click="$emit('delItem', item.id)">
           Удалить
         </button>
       </div>
@@ -31,27 +34,6 @@
 export default {
   name: 'Basket',
   props: ['newArrayBacket'],
-  methods:{
-    delItem(id){
-
-
-
-
-
-
-      // for(let i = 0; i < this.$props.newArrayBacket.length; i++){
-      //   // console.log(this.$props.newArrayBacket[i].id)
-      //   if(this.$props.newArrayBacket[i].id === id){
-      //     let c = this.$props.newArrayBacket
-      //     let a = c.slice(0, i--)
-      //     let b = c.slice(i++)
-      //     c = [...a, ...b]
-      //     c = this.$props.newArrayBacket
-      //     console.log(this.$props.newArrayBacket)
-      //   }
-      // }
-    }
-  }
 }
 </script>
 <style scoped>
@@ -66,7 +48,7 @@ export default {
   flex: 0 0 186px;
   background-color: #fff;
   margin: 10px;
-  height: 280px;
+  height: 320px;
 }
 .item__wrapper{
   padding-top: 5px;
@@ -88,5 +70,14 @@ export default {
   width: 100%;
   margin-top: 20px;
   height: 40px;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: .8em 1em calc(.8em + 3px);
+  border-radius: 3px;
+  background: rgb(64,199,129);
+  box-shadow: 0 -3px rgb(53,167,110) inset;
+  transition: 0.2s;
+  border: none;
 }
 </style>
