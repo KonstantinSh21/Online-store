@@ -40,8 +40,12 @@
         </div>
 
        <AdminRedactorItem
+       :transferRedactItem='transferRedactItem'
         :redactorItem='redactorItem'
-        v-show='stateRedactorItem'/>
+        v-show='stateRedactorItem'
+        :stateRedactorItem='stateRedactorItem'
+      
+        />
 
         <div class="wrapper-storeItem">
           <div
@@ -81,7 +85,7 @@ import AdminRedactorItem from '@/components/Header/Nav/AdminRedactorItem/AdminRe
 export default {
   name: 'AdminPanel',
 
-  props:['catalog'],
+  props:['catalog', 'redactItemFunc'],
 
   components: {
     AdminRedactorItem
@@ -101,6 +105,11 @@ export default {
     }
   },
   methods: {
+    transferRedactItem(item){
+    this.stateRedactorItem = !this.stateRedactorItem
+    this.$props.redactItemFunc(item)
+    },
+
     checkPassword(){
         if(this.password === "1234"){
           this.checkDone = !this.checkDone
@@ -123,29 +132,6 @@ export default {
       this.redactorItem = item
       this.stateRedactorItem = !this.stateRedactorItem
     }
-    //addNewCategories(){
-      //this.nameNewCategories = [
-      //  {
-      //    name: this.newName,
-      //    gender: this.newDender,
-      //    id: Math.random()*100,
-      //    basket: false,
-      //    size:'',
-      //    amount: 1,
-      //    price: this.newPrice,
-      //    img: this.newImg
-      //  },
-      //]
-
-      //console.log(this.nameNewCategories )
-
-      //this.date.push(this.nameNewCategories)
-
-      //this.$props.clouses = this.$props.clouses + this.nameNewCategories
-      //this.$props.clouses = this.$props.clouses + this.nameNewCategories
-      //this.$props.clouses = this.$props.clouses + this.nameNewCategories
-      //console.log(this.$props.clouses)
-    //*+-7+74}
   }
 }
 </script>

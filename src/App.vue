@@ -9,7 +9,7 @@
         />
 
         <router-link class="nav flex" to="/">Главная</router-link>
-        <router-link class="nav flex" to="/registration">Регистрация</router-link>
+        <router-link class="nav flex" to="/registration">Админка</router-link>
         <router-link class="nav flex" to="/basket">Корзина</router-link>
       </div>
     </div>
@@ -20,6 +20,7 @@
             :catalog="catalog"
             v-on:delItem="delItem"
             @addNewCategories='addNewCategories'
+            :redactItemFunc="redactItemFunc"
         />
       </div>
     </div>
@@ -65,10 +66,21 @@ export default {
 
         
         console.log(this.catalog)
+    },
+    redactItemFunc(item){
+      console.log(item.id)
+      for(let i = 0; i < this.catalog.length; i++){
+        if(item.id === this.catalog[i].id){
+          console.log(this.catalog[i])
+          console.log(item)
+          this.catalog[i] = item
+          
+          
+        }
+      }
+      // console.log(this.catalog)
     }
   },
-
-
   data() {
     return {
       catalog: [
