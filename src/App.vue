@@ -5,7 +5,7 @@
         <div class="nav name">OXYGEN</div>
         <Search
             class="search flex"
-            v-bind:catalog="catalog"
+            @SearchItem="SearchItem"
         />
 
         <router-link class="nav flex" to="/">Главная</router-link>
@@ -13,6 +13,10 @@
         <router-link class="nav flex" to="/basket">Корзина</router-link>
       </div>
     </div>
+    <SearchFilterItem
+        :searchItemArr="searchItemArr"
+        v-show="openSearchPenal"
+    />
     <div class="wrapper-body">
       <div class="body">
         <router-view
@@ -29,17 +33,38 @@
 
 <script>
 import Search from "@/components/Header/ Search/Search";
+import SearchFilterItem from "@/components/Header/ Search/SearchFilterItem";
 
 export default {
   name: "App",
   components: {
+    SearchFilterItem,
     Search
   },
   methods: {
+    SearchItem(value) {
+      this.openSearchPenal = true
+      this.searchItemArr = []
+      this.catalog.forEach(
+          (item) => {
+            if (value === item.catalog) {
+              this.searchItemArr.push(item)
+            } else {
+              this.searchItemArr = ["1"]
+            }
+            if (value === item.gender) {
+              this.searchItemArr.push(item)
+            }
+            console.log(this.searchItemArr)
+          }
+      )
+    },
+
     delItem(item) {
       for (let i = 0; i < this.newArrayBacket.length; i++) {
         if (this.newArrayBacket[i].id === item) {
           this.newArrayBacket[i].basket = false
+
           let oneArr = this.newArrayBacket.slice(0, i)
           let twoArr = this.newArrayBacket.slice(i + 1)
 
@@ -50,35 +75,33 @@ export default {
 
     addNewCategories(nameNewCategories, newName, newPrice, newDender, newImg) {
       // addNewCategoriesBool = !addNewCategoriesBool
-       let newItem = {
-          name: newName,
-          gender: newDender,
-          id: Math.random() * 100,
-          basket: false,
-          catalog: nameNewCategories,
-          size: '',
-          amount: 1,
-          price: newPrice,
-          img: newImg
-        }
-        this.catalog.push(newItem)
-        nameNewCategories = newName = newPrice = newDender = newImg = ''
+      let newItem = {
+        name: newName,
+        gender: newDender,
+        id: Math.random() * 100,
+        basket: false,
+        catalog: nameNewCategories,
+        size: '',
+        amount: 1,
+        price: newPrice,
+        img: newImg
+      }
+      this.catalog.push(newItem)
+      nameNewCategories = newName = newPrice = newDender = newImg = ''
 
-        
-        console.log(this.catalog)
+
+      console.log(this.catalog)
     },
-    redactItemFunc(item){
+    redactItemFunc(item) {
       console.log(item.id)
-      for(let i = 0; i < this.catalog.length; i++){
-        if(item.id === this.catalog[i].id){
+      for (let i = 0; i < this.catalog.length; i++) {
+        if (item.id === this.catalog[i].id) {
           console.log(this.catalog[i])
           console.log(item)
           this.catalog[i] = item
           item = {}
-          
         }
       }
-      // console.log(this.catalog)
     }
   },
   data() {
@@ -86,9 +109,9 @@ export default {
       catalog: [
         {
           name: "Дешевая мужская куртка",
-          gender: "men",
+          gender: "Mужская",
           id: 1,
-          catalog: 'twists',
+          catalog: 'Куртка',
           basket: false,
           size: '',
           amount: 1,
@@ -98,8 +121,8 @@ export default {
         {
           name: "Обычная мужская куртка",
           id: 2,
-          catalog: 'twists',
-          gender: "men",
+          catalog: 'Куртка',
+          gender: "Mужская",
           basket: false,
           size: '',
           amount: 1,
@@ -109,8 +132,8 @@ export default {
         {
           name: "Обычная мужская куртка",
           id: 3,
-          catalog: 'twists',
-          gender: "men",
+          catalog: 'Куртка',
+          gender: "Mужская",
           basket: false,
           size: '',
           amount: 1,
@@ -120,8 +143,8 @@ export default {
         {
           name: "Дорогая мужская куртка",
           id: 4,
-          catalog: 'twists',
-          gender: "men",
+          catalog: 'Куртка',
+          gender: "Mужская",
           basket: false,
           size: '',
           amount: 1,
@@ -131,8 +154,8 @@ export default {
         {
           name: "Дешевая женская куртка",
           id: 5,
-          catalog: 'twists',
-          gender: "women",
+          catalog: 'Куртка',
+          gender: "Женская",
           basket: false,
           size: '',
           amount: 1,
@@ -142,8 +165,8 @@ export default {
         {
           name: "Обычная женская куртка",
           id: 6,
-          catalog: 'twists',
-          gender: "women",
+          catalog: 'Куртка',
+          gender: "Женская",
           basket: false,
           size: '',
           amount: 1,
@@ -153,8 +176,8 @@ export default {
         {
           name: "Обычная женская куртка",
           id: 7,
-          catalog: 'twists',
-          gender: "women",
+          catalog: 'Куртка',
+          gender: "Женская",
           basket: false,
           size: '',
           amount: 1,
@@ -164,8 +187,8 @@ export default {
         {
           name: "Дорогая женская куртка",
           id: 8,
-          catalog: 'twists',
-          gender: "women",
+          catalog: 'Куртка',
+          gender: "Женская",
           basket: false,
           size: '',
           amount: 1,
@@ -175,8 +198,8 @@ export default {
         {
           name: "Дешевые мужские джинсы",
           id: 9,
-          catalog: 'jeans',
-          gender: "men",
+          catalog: 'Джинсы',
+          gender: "Mужская",
           size: '',
           amount: 1,
           basket: false,
@@ -186,8 +209,8 @@ export default {
         {
           name: "Средние мужские джинсы",
           id: 10,
-          catalog: 'jeans',
-          gender: "men",
+          catalog: 'Джинсы',
+          gender: "Mужская",
           size: '',
           amount: 1,
           basket: false,
@@ -197,8 +220,8 @@ export default {
         {
           name: "Дорогие мужские джинсы",
           id: 11,
-          catalog: 'jeans',
-          gender: "men",
+          catalog: 'Джинсы',
+          gender: "Mужская",
           size: '',
           amount: 1,
           basket: false,
@@ -208,8 +231,8 @@ export default {
         {
           name: "Дешевые женские джинсы",
           id: 12,
-          catalog: 'jeans',
-          gender: "women",
+          catalog: 'Джинсы',
+          gender: "Женская",
           basket: false,
           size: '',
           amount: 1,
@@ -219,8 +242,8 @@ export default {
         {
           name: "Обычные женские джинсы",
           id: 13,
-          catalog: 'jeans',
-          gender: "women",
+          catalog: 'Джинсы',
+          gender: "Женская",
           basket: false,
           size: '',
           amount: 1,
@@ -230,8 +253,8 @@ export default {
         {
           name: "Обычные женские джинсы",
           id: 14,
-          catalog: 'jeans',
-          gender: "women",
+          catalog: 'Джинсы',
+          gender: "Женская",
           basket: false,
           size: '',
           amount: 1,
@@ -241,8 +264,8 @@ export default {
         {
           name: "Дорогие джинсы",
           id: 15,
-          catalog: 'jeans',
-          gender: "women",
+          catalog: 'Джинсы',
+          gender: "Женская",
           basket: false,
           size: '',
           amount: 1,
@@ -251,6 +274,8 @@ export default {
         },
       ],
       newArrayBacket: [],
+      searchItemArr: [],
+      openSearchPenal: false
     }
   },
 }

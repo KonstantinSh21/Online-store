@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper-store">
+    <h1>Каталог</h1>
     <StoreItem
         :catalog="catalog"
         :newArrayBacket="newArrayBacket"
@@ -22,9 +23,16 @@ export default {
 </script>
 
 <style scoped>
+
 .wrapper-store {
+  display: block;
+  position: relative;
   padding: 40px;
   background-color: #999;
 }
 
+.wrapper-store h1{
+  text-align: center;
+
+}
 </style>
