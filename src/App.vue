@@ -74,7 +74,7 @@ export default {
           console.log(this.catalog[i])
           console.log(item)
           this.catalog[i] = item
-          
+          item = {}
           
         }
       }

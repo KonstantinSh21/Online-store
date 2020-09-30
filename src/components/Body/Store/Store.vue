@@ -1,13 +1,9 @@
 <template>
   <div class="wrapper-store">
-
     <StoreItem
         :catalog="catalog"
         :newArrayBacket="newArrayBacket"
     />
-    {{newArrayBacket}} 1{{catalog}}1
-
-
   </div>
 </template>
 

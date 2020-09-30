@@ -131,6 +131,7 @@ export default {
     openRedactorItem(item){
       this.redactorItem = item
       this.stateRedactorItem = !this.stateRedactorItem
+      item = {}
     }
   }
 }

@@ -91,7 +91,8 @@ export default{
     left: 0;
     width: 100%;
     height: 205%;
-    background-color: rgba(0, 0, 0, 0.7)
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
 }
 .wrapper-window{
     position: relative;
@@ -100,6 +101,7 @@ export default{
     text-align: center;
     margin: 0 auto;
     background-color: #fff;
+
 }
 .wrapper-window__item{
     margin-top: 400px;
