@@ -14,8 +14,13 @@
       </div>
     </div>
     <SearchFilterItem
+        @closeSearch='closeSearch'
         :searchItemArr="searchItemArr"
-        v-show="openSearchPenal"
+        v-if="openSearchPenal === true"
+    />
+    <SearchNoneItem
+    @closeSearch='closeSearch'
+    v-else-if='openSearchPenal === false'
     />
     <div class="wrapper-body">
       <div class="body">
@@ -34,27 +39,40 @@
 <script>
 import Search from "@/components/Header/ Search/Search";
 import SearchFilterItem from "@/components/Header/ Search/SearchFilterItem";
+import SearchNoneItem from  "@/components/Header/ Search/SearchNoneItem";
 
 export default {
   name: "App",
   components: {
     SearchFilterItem,
-    Search
+    Search,
+    SearchNoneItem
   },
   methods: {
+    closeSearch(){
+      this.openSearchPenal = null
+    },
+
     SearchItem(value) {
-      this.openSearchPenal = true
+      this.openSearchPenal = null
       this.searchItemArr = []
+    
       this.catalog.forEach(
           (item) => {
             if (value === item.catalog) {
-              this.searchItemArr.push(item)
+              this.openSearchPenal = true
+               console.log(this.searchItemArr)
+               this.searchItemArr.push(item)
             } else {
-              this.searchItemArr = ["1"]
+              this.openSearchPenal = false
+              this.searchItemArr = []
             }
+
             if (value === item.gender) {
+              this.openSearchPenal = null
               this.searchItemArr.push(item)
             }
+            // this.openSearchPenal = null
             console.log(this.searchItemArr)
           }
       )
@@ -63,6 +81,7 @@ export default {
     delItem(item) {
       for (let i = 0; i < this.newArrayBacket.length; i++) {
         if (this.newArrayBacket[i].id === item) {
+
           this.newArrayBacket[i].basket = false
 
           let oneArr = this.newArrayBacket.slice(0, i)
@@ -275,11 +294,11 @@ export default {
       ],
       newArrayBacket: [],
       searchItemArr: [],
-      openSearchPenal: false
+      openSearchPenal: null,
+      // searchDone: false
     }
   },
 }
-
 </script>
 
 <style>
