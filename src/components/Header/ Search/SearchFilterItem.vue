@@ -2,8 +2,9 @@
   <div class="wrapper-search-filter-item">
     <div 
       v-for='item in this.$props.searchItemArr'
-      :key=item.id>
-      <!-- {{item}} -->
+      :key=item.id
+      class="wrapper_item"
+      >
       <div class="item__wrapper">
         <img
             class="item__img"
@@ -20,7 +21,7 @@
       <button class="item-btn" @click='$emit("closeSearch")'>
         Закрыть
       </button>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -38,6 +39,10 @@ export default {
   justify-content: center;
   max-width: 80%;
 }
+.wrapper_item{
+  padding: 10px;
+  margin: 10px;
+}
 
 .item__wrapper {
   border-radius: 10px;
@@ -48,7 +53,9 @@ export default {
   height: 280px;
 }
 .item__wrapper{
-  padding-top: 5px;
+  
+  border: 1px solid #000;
+  padding-top: 15px;
   margin: 0 auto;
   text-align: center;
 }
@@ -67,5 +74,4 @@ export default {
   width: 100px;
   height: 20px;
 }
-
 </style>

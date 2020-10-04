@@ -11,6 +11,7 @@
         <router-link class="nav flex" to="/">Главная</router-link>
         <router-link class="nav flex" to="/registration">Админка</router-link>
         <router-link class="nav flex" to="/basket">Корзина</router-link>
+        
       </div>
     </div>
     <SearchFilterItem
@@ -67,17 +68,14 @@ export default {
               this.openSearchPenal = false
               this.searchItemArr = []
             }
-
             if (value === item.gender) {
               this.openSearchPenal = null
               this.searchItemArr.push(item)
             }
-            // this.openSearchPenal = null
             console.log(this.searchItemArr)
           }
       )
     },
-
     delItem(item) {
       for (let i = 0; i < this.newArrayBacket.length; i++) {
         if (this.newArrayBacket[i].id === item) {
@@ -93,7 +91,6 @@ export default {
     },
 
     addNewCategories(nameNewCategories, newName, newPrice, newDender, newImg) {
-      // addNewCategoriesBool = !addNewCategoriesBool
       let newItem = {
         name: newName,
         gender: newDender,
@@ -295,14 +292,12 @@ export default {
       newArrayBacket: [],
       searchItemArr: [],
       openSearchPenal: null,
-      // searchDone: false
     }
   },
 }
 </script>
 
 <style>
-
 .wrapper-header {
   max-width: 1470px;
   min-width: 100%;

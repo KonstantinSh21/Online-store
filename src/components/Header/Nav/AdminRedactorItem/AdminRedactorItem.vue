@@ -103,7 +103,6 @@ export default {
       this.newRedactorItem.size= this.$props.redactorItem.size
       this.newRedactorItem.amount = this.$props.redactorItem.amount
       this.newName = ''
-
     },
     redactorCatalog() {
       if (this.newCatalog !== '') {

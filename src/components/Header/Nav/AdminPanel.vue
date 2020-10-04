@@ -34,17 +34,18 @@
             <input v-model="newPrice" placeholder="Цена первого товара">
             <input v-model="newDender" placeholder="Пол">
             <input v-model="newImg" placeholder="Картинка">
-          <button
-          @click="$emit('addNewCategories', nameNewCategories,  newName, newPrice, newDender, newImg )">Добавить</button>
 
+          <button
+            @click="$emit('addNewCategories', nameNewCategories,  newName, newPrice, newDender, newImg )">
+            Добавить
+          </button>
         </div>
 
        <AdminRedactorItem
-       :transferRedactItem='transferRedactItem'
+        :transferRedactItem='transferRedactItem'
         :redactorItem='redactorItem'
         v-show='stateRedactorItem'
         :stateRedactorItem='stateRedactorItem'
-      
         />
 
         <div class="wrapper-storeItem">
@@ -71,25 +72,22 @@
             <button class="item__btn">
                 Добавить в корзину
             </button>
-          </div> 
-        </div>   
+          </div>
+        </div> 
       </div>      
     </div>
   </div>
 </div>
 </template>
 <script>
-
 import AdminRedactorItem from '@/components/Header/Nav/AdminRedactorItem/AdminRedactorItem'
-
 export default {
   name: 'AdminPanel',
-
   props:['catalog', 'redactItemFunc'],
-
   components: {
     AdminRedactorItem
   },
+
   data() {
     return{
       password: '',
@@ -104,6 +102,7 @@ export default {
       stateRedactorItem: false
     }
   },
+
   methods: {
     transferRedactItem(item){
     this.stateRedactorItem = !this.stateRedactorItem
@@ -111,12 +110,12 @@ export default {
     },
 
     checkPassword(){
-        if(this.password === "1234"){
-          this.checkDone = !this.checkDone
-          this.password = ''
-        } else {
-          console.log('none')
-        }
+      if(this.password === "1234"){
+        this.checkDone = !this.checkDone
+        this.password = ''
+      } else {
+         console.log('none')
+      }
     },
 
     addNewCategoriesOpen(){
