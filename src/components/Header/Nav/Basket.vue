@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper-basket">
-
     <div
         v-for="(item, index) in newArrayBacket"
         v-bind:key="index"

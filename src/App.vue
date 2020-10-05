@@ -8,7 +8,7 @@
             @SearchItem="SearchItem"
         />
 
-        <router-link class="nav flex" to="/">Главная</router-link>
+        <router-link class="nav flex main" to="/">Главная</router-link>
         <router-link class="nav flex" to="/registration">Админка</router-link>
         <router-link class="nav flex" to="/basket">Корзина</router-link>
 
@@ -45,7 +45,6 @@ import SearchNoneItem from "@/components/Header/ Search/SearchNoneItem";
 
 export default {
   methods: {
-
     closeSearch() {
       this.openSearchPenal = null
     },
@@ -72,7 +71,6 @@ export default {
     delItem(item) {
       for (let i = 0; i < this.newArrayBacket.length; i++) {
         if (this.newArrayBacket[i].id === item) {
-
           this.newArrayBacket[i].basket = false
 
           let oneArr = this.newArrayBacket.slice(0, i)
@@ -299,12 +297,24 @@ export default {
       newArrayBacket: [],
       searchItemArr: [],
       openSearchPenal: null,
+
+      clickOne: false,
+      clickTwo: false,
+      clickThree: false,
+
     }
   },
 }
 </script>
 
 <style>
+.main{
+  margin-left: 10px;
+}
+.router-link-exact-active{
+  border-bottom: 3px solid #0d8bf2;
+  transition: 0.2s;
+}
 .wrapper-header {
   max-width: 1470px;
   min-width: 100%;
@@ -319,6 +329,8 @@ export default {
 }
 
 .nav {
+  padding-left: 10px;
+  padding-right: 10px;
   text-decoration: none;
   color: black;
 }
