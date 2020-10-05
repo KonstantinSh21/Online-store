@@ -46,6 +46,7 @@
         :redactorItem='redactorItem'
         v-show='stateRedactorItem'
         :stateRedactorItem='stateRedactorItem'
+        :deleteItemTransformAdminPanel="deleteItemTransformAdminPanel"
         />
 
         <div class="wrapper-storeItem">
@@ -83,7 +84,7 @@
 import AdminRedactorItem from '@/components/Header/Nav/AdminRedactorItem/AdminRedactorItem'
 export default {
   name: 'AdminPanel',
-  props:['catalog', 'redactItemFunc'],
+  props:['catalog', 'redactItemFunc', 'deleteItemTransform'],
   components: {
     AdminRedactorItem
   },
@@ -104,6 +105,11 @@ export default {
   },
 
   methods: {
+    deleteItemTransformAdminPanel(value){
+      this.stateRedactorItem = !this.stateRedactorItem
+      this.$props.deleteItemTransform(value)
+    },
+
     transferRedactItem(item){
     this.stateRedactorItem = !this.stateRedactorItem
     this.$props.redactItemFunc(item)

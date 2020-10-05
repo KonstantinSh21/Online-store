@@ -32,8 +32,12 @@
     </div>
 
     <div>
-      <button @click='aaa'>
+      <button @click='redactItemTransform'>
         Добавить изменения на сайт
+      </button>
+
+      <button @click="deleteItemTransform(redactorItem)">
+        Удалить этот элемент
       </button>
     </div>
   </div>
@@ -42,7 +46,7 @@
 <script>
 export default {
   name: 'AdminRedactorItem',
-  props: ['redactorItem', 'transferRedactItem', 'stateRedactorItem'],
+  props: ['redactorItem', 'transferRedactItem', 'stateRedactorItem','deleteItemTransformAdminPanel'],
   data() {
     return {
       newName: '',
@@ -64,7 +68,11 @@ export default {
     }
   },
   methods: {
-    aaa() {
+    deleteItemTransform(value){
+      this.$props.deleteItemTransformAdminPanel(value)
+    },
+
+    redactItemTransform(){
       this.$props.transferRedactItem(this.newRedactorItem)
       this.newRedactorItem = {
         name: '',

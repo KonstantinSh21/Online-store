@@ -11,7 +11,7 @@
         <router-link class="nav flex" to="/">Главная</router-link>
         <router-link class="nav flex" to="/registration">Админка</router-link>
         <router-link class="nav flex" to="/basket">Корзина</router-link>
-        
+
       </div>
     </div>
     <SearchFilterItem
@@ -31,6 +31,7 @@
             v-on:delItem="delItem"
             @addNewCategories='addNewCategories'
             :redactItemFunc="redactItemFunc"
+            :deleteItemTransform="deleteItemTransform"
         />
       </div>
     </div>
@@ -43,12 +44,6 @@ import SearchFilterItem from "@/components/Header/ Search/SearchFilterItem";
 import SearchNoneItem from  "@/components/Header/ Search/SearchNoneItem";
 
 export default {
-  name: "App",
-  components: {
-    SearchFilterItem,
-    Search,
-    SearchNoneItem
-  },
   methods: {
     closeSearch(){
       this.openSearchPenal = null
@@ -57,13 +52,13 @@ export default {
     SearchItem(value) {
       this.openSearchPenal = null
       this.searchItemArr = []
-    
+
       this.catalog.forEach(
           (item) => {
             if (value === item.catalog) {
               this.openSearchPenal = true
-               console.log(this.searchItemArr)
-               this.searchItemArr.push(item)
+              console.log(this.searchItemArr)
+              this.searchItemArr.push(item)
             } else {
               this.openSearchPenal = false
               this.searchItemArr = []
@@ -105,20 +100,36 @@ export default {
       this.catalog.push(newItem)
       nameNewCategories = newName = newPrice = newDender = newImg = ''
 
-
       console.log(this.catalog)
     },
+
+    deleteItemTransform(value){
+      for (let i = 0; i < this.catalog.length; i++) {
+        if (this.catalog[i].id === value.id) {
+
+          let oneArr = this.catalog.slice(0, i)
+          let twoArr = this.catalog.slice(i + 1)
+
+          this.catalog = [...oneArr, ...twoArr]
+        }
+      }
+    },
+
     redactItemFunc(item) {
       console.log(item.id)
       for (let i = 0; i < this.catalog.length; i++) {
         if (item.id === this.catalog[i].id) {
-          console.log(this.catalog[i])
-          console.log(item)
           this.catalog[i] = item
           item = {}
         }
       }
     }
+  },
+  name: "App",
+  components: {
+    SearchFilterItem,
+    Search,
+    SearchNoneItem
   },
   data() {
     return {
