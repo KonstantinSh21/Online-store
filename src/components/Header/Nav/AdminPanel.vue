@@ -26,77 +26,78 @@
         </div>
 
         <div v-show="addNewCategoriesBool">
-            <div>
-              Какое будет название у ващей новой категории, пожалйстава введите ее на англиском языке
-            </div>
-            <input v-model="nameNewCategories" placeholder="Название категории">
-            <input v-model="newName" placeholder="Название первого товара">
-            <input v-model="newPrice" placeholder="Цена первого товара">
-            <input v-model="newDender" placeholder="Пол">
-            <input v-model="newImg" placeholder="Картинка">
+          <div>
+            Какое будет название у ващей новой категории, пожалйстава введите ее на англиском языке
+          </div>
+          <input v-model="nameNewCategories" placeholder="Название категории">
+          <input v-model="newName" placeholder="Название первого товара">
+          <input v-model="newPrice" placeholder="Цена первого товара">
+          <input v-model="newDender" placeholder="Пол">
+          <input v-model="newImg" placeholder="Картинка">
 
           <button
-            @click="$emit('addNewCategories', nameNewCategories,  newName, newPrice, newDender, newImg )">
+              @click="$emit('addNewCategories', nameNewCategories,  newName, newPrice, newDender, newImg )">
             Добавить
           </button>
         </div>
 
-       <AdminRedactorItem
-        :transferRedactItem='transferRedactItem'
-        :redactorItem='redactorItem'
-        v-show='stateRedactorItem'
-        :stateRedactorItem='stateRedactorItem'
-        :deleteItemTransformAdminPanel="deleteItemTransformAdminPanel"
+        <AdminRedactorItem
+            :transferRedactItem='transferRedactItem'
+            :redactorItem='redactorItem'
+            v-show='stateRedactorItem'
+            :stateRedactorItem='stateRedactorItem'
+            :deleteItemTransformAdminPanel="deleteItemTransformAdminPanel"
         />
 
         <div class="wrapper-storeItem">
           <div
-           v-for='item in catalog'
-           :item='item'
-           :key="item.id"
-           class="wrapper-item"
-           >
-           <div class="item__wrapper">
-            <div @click='openRedactorItem(item)' class="item_redactor">
-              ред
-            </div>
-            <img
-                class="item__img"
-                v-bind:src="item.img"
-            />
-            <div class="item__name">
-              {{item.name}}
-            </div>
-            <div class="item__price">
-              {{item.price}}
-            </div>
-            <button class="item__btn">
+              v-for='item in catalog'
+              :item='item'
+              :key="item.id"
+              class="wrapper-item"
+          >
+            <div class="item__wrapper">
+              <div @click='openRedactorItem(item)' class="item_redactor">
+                ред
+              </div>
+              <img
+                  class="item__img"
+                  v-bind:src="item.img"
+              />
+              <div class="item__name">
+                {{ item.name }}
+              </div>
+              <div class="item__price">
+                {{ item.price }}
+              </div>
+              <button class="item__btn">
                 Добавить в корзину
-            </button>
+              </button>
+            </div>
           </div>
-        </div> 
-      </div>      
+        </div>
+      </div>
     </div>
   </div>
-</div>
 </template>
 <script>
 import AdminRedactorItem from '@/components/Header/Nav/AdminRedactorItem/AdminRedactorItem'
+
 export default {
   name: 'AdminPanel',
-  props:['catalog', 'redactItemFunc', 'deleteItemTransform'],
+  props: ['catalog', 'redactItemFunc', 'deleteItemTransform'],
   components: {
     AdminRedactorItem
   },
 
   data() {
-    return{
+    return {
       password: '',
       checkDone: true,
       addNewCategoriesBool: false,
       nameNewCategories: '',
-      newName : '',
-      newPrice : '',
+      newName: '',
+      newPrice: '',
       newDender: '',
       newImg: '',
       redactorItem: {},
@@ -105,35 +106,35 @@ export default {
   },
 
   methods: {
-    deleteItemTransformAdminPanel(value){
+    deleteItemTransformAdminPanel(value) {
       this.stateRedactorItem = !this.stateRedactorItem
       this.$props.deleteItemTransform(value)
     },
 
-    transferRedactItem(item){
-    this.stateRedactorItem = !this.stateRedactorItem
-    this.$props.redactItemFunc(item)
+    transferRedactItem(item) {
+      this.stateRedactorItem = !this.stateRedactorItem
+      this.$props.redactItemFunc(item)
     },
 
-    checkPassword(){
-      if(this.password === "1234"){
+    checkPassword() {
+      if (this.password === "1234") {
         this.checkDone = !this.checkDone
         this.password = ''
       } else {
-         console.log('none')
+        console.log('none')
       }
     },
 
-    addNewCategoriesOpen(){
+    addNewCategoriesOpen() {
       this.addNewCategoriesBool = !this.addNewCategoriesBool
       this.nameNewCategories = ''
-      this.newName  = ''
-      this.newPrice  = ''
+      this.newName = ''
+      this.newPrice = ''
       this.newDender = ''
       this.newImg = ''
     },
 
-    openRedactorItem(item){
+    openRedactorItem(item) {
       this.redactorItem = item
       this.stateRedactorItem = !this.stateRedactorItem
       item = {}
@@ -143,13 +144,12 @@ export default {
 </script>
 
 <style>
-  .wrapper-storeItem {
+.wrapper-storeItem {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-
 
 .wrapper-item {
   border-radius: 10px;
@@ -159,34 +159,40 @@ export default {
   margin: 10px;
   height: 280px;
 }
-.item__wrapper{
+
+.item__wrapper {
   padding-top: 5px;
   margin: 0 auto;
   text-align: center;
   position: relative;
 }
-.item_redactor{
-  position:absolute;
-  top:0px;
+
+.item_redactor {
+  position: absolute;
+  top: 0;
   left: 90%;
   height: 25px;
   width: 25px;
-  border-radius:100%;
+  border-radius: 100%;
   background-color: green;
   cursor: pointer;
 }
-.item__img{
+
+.item__img {
   height: 150px;
 }
-.item__name{
+
+.item__name {
   padding-top: 10px;
 }
-.item__price{
+
+.item__price {
   padding-top: 10px;
   font-size: 20px;
   font-weight: bold;
 }
-.item__btn{
+
+.item__btn {
   width: 100%;
   margin-top: 20px;
   height: 40px;
@@ -195,8 +201,8 @@ export default {
   text-decoration: none;
   padding: .8em 1em calc(.8em + 3px);
   border-radius: 3px;
-  background: rgb(64,199,129);
-  box-shadow: 0 -3px rgb(53,167,110) inset;
+  background: rgb(64, 199, 129);
+  box-shadow: 0 -3px rgb(53, 167, 110) inset;
   transition: 0.2s;
   border: none;
 }

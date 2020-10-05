@@ -31,7 +31,7 @@ export default {
   background-color: #999;
 }
 
-.wrapper-store h1{
+.wrapper-store h1 {
   text-align: center;
 
 }

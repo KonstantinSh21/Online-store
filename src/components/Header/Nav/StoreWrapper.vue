@@ -14,7 +14,7 @@ import Store from "@/components/Body/Store/Store";
 export default {
   name: "StoreWrapper",
   components: {Store},
-  props:["newArrayBacket", "catalog"]
+  props: ["newArrayBacket", "catalog"]
 }
 </script>
 

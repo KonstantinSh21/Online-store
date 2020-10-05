@@ -1,14 +1,14 @@
 <template>
-<div>
+  <div>
     Не нашел данных об такой категории
     <button @click='$emit("closeSearch")'>
-        Закрыть
+      Закрыть
     </button>
-</div>
+  </div>
 </template>
-<script >
+<script>
 export default {
-name :'SearchNoneItem'
+  name: 'SearchNoneItem'
 }
 </script>
 <style>

@@ -1,26 +1,26 @@
 <template>
   <div class="wrapper-search-filter-item">
-    <div 
-      v-for='item in this.$props.searchItemArr'
-      :key=item.id
-      class="wrapper_item"
-      >
+    <div
+        v-for='item in this.$props.searchItemArr'
+        :key=item.id
+        class="wrapper_item"
+    >
       <div class="item__wrapper">
         <img
             class="item__img"
             v-bind:src="item.img"
         />
         <div class="item__name">
-          {{item.name}}
+          {{ item.name }}
         </div>
         <div class="item__price">
-          {{item.price}}
+          {{ item.price }}
         </div>
       </div>
     </div>
-      <button class="item-btn" @click='$emit("closeSearch")'>
-        Закрыть
-      </button>
+    <button class="item-btn" @click='$emit("closeSearch")'>
+      Закрыть
+    </button>
   </div>
 </template>
 
@@ -32,14 +32,15 @@ export default {
 </script>
 
 <style scoped>
-.wrapper-search-filter-item{
+.wrapper-search-filter-item {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 80%;
 }
-.wrapper_item{
+
+.wrapper_item {
   padding: 10px;
   margin: 10px;
 }
@@ -52,25 +53,30 @@ export default {
   margin: 10px;
   height: 280px;
 }
-.item__wrapper{
-  
+
+.item__wrapper {
+
   border: 1px solid #000;
   padding-top: 15px;
   margin: 0 auto;
   text-align: center;
 }
-.item__img{
+
+.item__img {
   height: 150px;
 }
-.item__name{
+
+.item__name {
   padding-top: 10px;
 }
-.item__price{
+
+.item__price {
   padding-top: 10px;
   font-size: 20px;
   font-weight: bold;
 }
-.item-btn{
+
+.item-btn {
   width: 100px;
   height: 20px;
 }

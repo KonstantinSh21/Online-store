@@ -4,18 +4,18 @@
     <div
         v-for="(item, index) in newArrayBacket"
         v-bind:key="index"
-        v-bind:item="item"
-        class="wrapper-item">
+        class="wrapper-item"
+        v-bind:item="item">
       <div class="item__wrapper">
         <img
             class="item__img"
             v-bind:src="item.img"
         />
         <div class="item__name">
-          {{ item.name }} <br/> {{item.size}}
+          {{ item.name }} <br/> {{ item.size }}
         </div>
         <div class="item__name">
-          В количистве {{item.amount}} штук
+          В количистве {{ item.amount }} штук
         </div>
         <div class="item__price">
           {{ item.price }}
@@ -50,23 +50,28 @@ export default {
   margin: 10px;
   height: 320px;
 }
-.item__wrapper{
+
+.item__wrapper {
   padding-top: 5px;
   margin: 0 auto;
   text-align: center;
 }
-.item__img{
+
+.item__img {
   height: 150px;
 }
-.item__name{
+
+.item__name {
   padding-top: 10px;
 }
-.item__price{
+
+.item__price {
   padding-top: 10px;
   font-size: 20px;
   font-weight: bold;
 }
-.item__btn{
+
+.item__btn {
   width: 100%;
   margin-top: 20px;
   height: 40px;
@@ -75,8 +80,8 @@ export default {
   text-decoration: none;
   padding: .8em 1em calc(.8em + 3px);
   border-radius: 3px;
-  background: rgb(64,199,129);
-  box-shadow: 0 -3px rgb(53,167,110) inset;
+  background: rgb(64, 199, 129);
+  box-shadow: 0 -3px rgb(53, 167, 110) inset;
   transition: 0.2s;
   border: none;
 }

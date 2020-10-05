@@ -79,7 +79,6 @@ export default{
             this.itemClick.amount = this.itemClick.amount + 1
             console.log(this.itemClick.amount)
         },
-        
     },
 }
 </script>
@@ -160,12 +159,6 @@ export default{
 .amount{
     width: 50%;
 }
-.checkbox{
-    display: flex;
-    justify-content: center;
-    font-size: 18px;
-}
-
 .number-amount{
     margin: 0 auto;
     background-color: #2196F3;

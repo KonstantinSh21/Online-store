@@ -20,8 +20,8 @@
         v-if="openSearchPenal === true"
     />
     <SearchNoneItem
-    @closeSearch='closeSearch'
-    v-else-if='openSearchPenal === false'
+        @closeSearch='closeSearch'
+        v-else-if='openSearchPenal === false'
     />
     <div class="wrapper-body">
       <div class="body">
@@ -41,11 +41,12 @@
 <script>
 import Search from "@/components/Header/ Search/Search";
 import SearchFilterItem from "@/components/Header/ Search/SearchFilterItem";
-import SearchNoneItem from  "@/components/Header/ Search/SearchNoneItem";
+import SearchNoneItem from "@/components/Header/ Search/SearchNoneItem";
 
 export default {
   methods: {
-    closeSearch(){
+
+    closeSearch() {
       this.openSearchPenal = null
     },
 
@@ -57,17 +58,14 @@ export default {
           (item) => {
             if (value === item.catalog) {
               this.openSearchPenal = true
-              console.log(this.searchItemArr)
               this.searchItemArr.push(item)
-            } else {
-              this.openSearchPenal = false
-              this.searchItemArr = []
             }
+            console.log(item.gender)
+            console.log(value)
             if (value === item.gender) {
-              this.openSearchPenal = null
+              this.openSearchPenal = true
               this.searchItemArr.push(item)
             }
-            console.log(this.searchItemArr)
           }
       )
     },
@@ -99,11 +97,9 @@ export default {
       }
       this.catalog.push(newItem)
       nameNewCategories = newName = newPrice = newDender = newImg = ''
-
-      console.log(this.catalog)
     },
 
-    deleteItemTransform(value){
+    deleteItemTransform(value) {
       for (let i = 0; i < this.catalog.length; i++) {
         if (this.catalog[i].id === value.id) {
 
