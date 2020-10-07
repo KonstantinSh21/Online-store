@@ -1,30 +1,36 @@
 <template>
   <div class="wrapper-basket">
-    <div
-        v-for="(item, index) in newArrayBacket"
-        v-bind:key="index"
-        class="wrapper-item"
-        v-bind:item="item">
-      <div class="item__wrapper">
-        <img
-            class="item__img"
-            v-bind:src="item.img"
-        />
-        <div class="item__name">
-          {{ item.name }} <br/> {{ item.size }}
+    <h1>
+      Корзина
+    </h1>
+    <div class="flex">
+      <div
+          v-for="(item, index) in newArrayBacket"
+          v-bind:key="index"
+          class="wrapper-item"
+          v-bind:item="item">
+        <div class="item__wrapper">
+          <img
+              class="item__img"
+              v-bind:src="item.img"
+          />
+          <div class="item__name">
+            {{ item.name }} <br/> {{ item.size }}
+          </div>
+          <div class="item__name">
+            В количистве {{ item.amount }} штук
+          </div>
+          <div class="item__price">
+            {{ item.price }}
+          </div>
+          <button class='item__btn' @click="$emit('delItem', item.id)">
+            Удалить
+          </button>
         </div>
-        <div class="item__name">
-          В количистве {{ item.amount }} штук
-        </div>
-        <div class="item__price">
-          {{ item.price }}
-        </div>
-        <button class='item__btn' @click="$emit('delItem', item.id)">
-          Удалить
-        </button>
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -37,6 +43,15 @@ export default {
 </script>
 <style scoped>
 .wrapper-basket {
+  padding: 20px;
+  background-color: #0d8bf2;
+  border-radius: 20px;
+}
+.wrapper-basket h1{
+  text-align: center;
+  color: #fff;
+}
+.flex{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -49,13 +64,11 @@ export default {
   margin: 10px;
   height: 320px;
 }
-
 .item__wrapper {
   padding-top: 5px;
   margin: 0 auto;
   text-align: center;
 }
-
 .item__img {
   height: 150px;
 }
@@ -69,7 +82,6 @@ export default {
   font-size: 20px;
   font-weight: bold;
 }
-
 .item__btn {
   width: 100%;
   margin-top: 20px;

@@ -9,7 +9,7 @@
         />
 
         <router-link class="nav flex main" to="/">Главная</router-link>
-        <router-link class="nav flex" to="/registration">Админка</router-link>
+        <router-link class="nav flex" to="/registration">Панель администора</router-link>
         <router-link class="nav flex" to="/basket">Корзина</router-link>
 
       </div>
@@ -311,6 +311,9 @@ export default {
 .main{
   margin-left: 10px;
 }
+.name{
+  line-height: 35px;
+}
 .router-link-exact-active{
   border-bottom: 3px solid #0d8bf2;
   transition: 0.2s;
@@ -318,17 +321,18 @@ export default {
 .wrapper-header {
   max-width: 1470px;
   min-width: 100%;
-  background-color: #cccccc;
-  height: 130px;
+  background-color: #ffffff;
+  height: 150px;
 }
 
 .wrapper-nav {
-  padding-top: 50px;
+  padding-top: 70px;
   justify-content: center;
   display: flex;
 }
 
 .nav {
+  font-size: 20px;
   padding-left: 10px;
   padding-right: 10px;
   text-decoration: none;
@@ -343,7 +347,7 @@ export default {
 
 .wrapper-body {
   min-width: 100%;
-  background-color: #cccccc;
+  background-color: #ffffff;
 }
 
 .body {

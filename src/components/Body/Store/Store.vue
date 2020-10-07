@@ -28,10 +28,14 @@ export default {
   display: block;
   position: relative;
   padding: 40px;
-  background-color: #999;
+  background-color: #0d8bf2;
+  border-radius: 20px;
+  margin-bottom: 150px;
 }
 
 .wrapper-store h1 {
+
+  color: white;
   text-align: center;
 
 }

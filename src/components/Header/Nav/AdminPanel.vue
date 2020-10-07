@@ -1,23 +1,19 @@
 <template>
   <div class="wrapper_registration">
-    <div>AdminPanel</div>
-    <div v-if="checkDone">
+    <h1 class="item__password">Панель администратора</h1>
+    <div class="item__password_input_btn" v-if="checkDone">
+      <h2>Введите пароль:</h2>
       <input v-model="password" type="text">
       <button @click="checkPassword">Ввести</button>
     </div>
 
     <div v-else>
-      <div>Проверка пройдена</div>
       <div>
         <div>
-          Добавить новый товар:
-        </div>
-
-        <div>
-          <div>
-            Создать новыю катеригию
-          </div>
-          <div>
+          <h2>
+            Добавить новый товар
+          </h2>
+          <div class="create-new-item">
             <button @click="addNewCategoriesOpen">
               <span v-if='nameNewCategories === "" || newName=== "" || newPrice==="" || newImg ===""'>Создать</span>
               <span v-else>Закрыть</span>
@@ -25,18 +21,15 @@
           </div>
         </div>
 
-        <div v-show="addNewCategoriesBool">
-          <div>
-            Какое будет название у ващей новой категории, пожалйстава введите ее на англиском языке
-          </div>
+        <div class="input_group" v-show="addNewCategoriesBool">
           <input v-model="nameNewCategories" placeholder="Название категории">
-          <input v-model="newName" placeholder="Название первого товара">
-          <input v-model="newPrice" placeholder="Цена первого товара">
+          <input v-model="newName" placeholder="Название  товара">
+          <input v-model="newPrice" placeholder="Цена товара">
           <input v-model="newDender" placeholder="Пол">
           <input v-model="newImg" placeholder="Картинка">
 
           <button
-              @click="$emit('addNewCategories', nameNewCategories,  newName, newPrice, newDender, newImg )">
+              @click="$emit('addNewCategories', nameNewCategories,  newName, newPrice, newDender, newImg)">
             Добавить
           </button>
         </div>
@@ -48,6 +41,9 @@
             :stateRedactorItem='stateRedactorItem'
             :deleteItemTransformAdminPanel="deleteItemTransformAdminPanel"
         />
+        <h1>
+          Предсмотр каталога:
+        </h1>
 
         <div class="wrapper-storeItem">
           <div
@@ -144,6 +140,41 @@ export default {
 </script>
 
 <style>
+.wrapper_registration{
+  margin: 0 auto;
+  text-align: center;
+  background-color: #0d8bf2;
+  border-radius: 25px;
+  color: white;
+}
+.item__password{
+  padding-top: 40px;
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+.item__password_input_btn{
+  padding-bottom: 40px;
+}
+.item__password_input_btn input{
+  width: 15%;
+  height: 25px;
+  border: 2px solid #76bbef;
+}
+.item__password_input_btn button{
+  background-color: #fff;
+  height: 31px;
+  border-top: 2px solid #76bbef;
+  border-bottom: 2px solid #76bbef;
+  border-right: 2px solid #76bbef;
+  text-align: center;
+  font-size: 16px;
+}
+
+.item__password_input_btn button:hover{
+  background-color: #216599;
+  color: white;
+}
+
 .wrapper-storeItem {
   position: relative;
   display: flex;
@@ -181,12 +212,21 @@ export default {
 .item__img {
   height: 150px;
 }
+.create-new-item button{
+  background-color: #fff;
+  border: 2px solid #0d8bf2;
+}
+.create-new-item:hover{
+  color: #fff;
+}
 
 .item__name {
+  color: #000;
   padding-top: 10px;
 }
 
 .item__price {
+  color: #000;
   padding-top: 10px;
   font-size: 20px;
   font-weight: bold;
@@ -205,5 +245,9 @@ export default {
   box-shadow: 0 -3px rgb(53, 167, 110) inset;
   transition: 0.2s;
   border: none;
+}
+
+.input_group{
+  padding: 20px;
 }
 </style>

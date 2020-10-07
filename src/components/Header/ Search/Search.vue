@@ -25,25 +25,24 @@ export default {
 .wrapper-search input{
   width: 85%;
   height: 30px;
-  border: 1px solid #0d8bf2;
-  /*border-radius: ;*/
+  border: 2px solid #0d8bf2;
 }
-.search{
 
-}
 .btn-search{
   background-color: #fff;
   width: 15%;
   height: 32px;
-  border-top: 1px solid #0d8bf2;
-  border-bottom: 1px solid #0d8bf2;
-  border-right: 1px solid #0d8bf2;
+  border-top: 2px solid #0d8bf2;
+  border-bottom: 2px solid #0d8bf2;
+  border-right: 2px solid #0d8bf2;
   line-height: 32px;
   text-align: center;
+
 }
 
 .btn-search:hover{
   background-color: #216599;
+  color: white;
 }
 
 </style>

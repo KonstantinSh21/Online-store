@@ -104,6 +104,7 @@ export default {
 }
 
 .item__img {
+  border-radius: 20px;
   height: 150px;
 }
 

@@ -1,46 +1,50 @@
 <template>
+<div>
   <div class="wrapper_redactor">
-    <div>
-      <span>Название: {{ redactorItem.name }}</span>
+    <div class="wrapper_name">
+      <h3>Название: {{ redactorItem.name }}</h3>
       <input v-model="newName" placeholder="Изменить название..."/>
       <button @click="redactorName">Изменить</button>
+
     </div>
     <div>
-      Имя каталога: {{ redactorItem.catalog }}
+      <h3>Имя каталога: {{ redactorItem.catalog }}</h3>
       <input v-model='newCatalog' placeholder="Изменить каталог..."/>
       <button @click="redactorCatalog">Изменить</button>
     </div>
     <div>
-      Пол: {{ redactorItem.gender }}
+      <h3>Пол: {{ redactorItem.gender }}</h3>
       <input v-model='newGender' placeholder="Изменить пол..."/>
       <button @click="redactorGender">Изменить</button>
     </div>
     <div>
-      Цена: {{ redactorItem.price }}
+      <h3>Цена: {{ redactorItem.price }}</h3>
       <input v-model='newPrice' placeholder="Изменить цену..."/>
       <button @click="redactorPrice">Изменить</button>
     </div>
-    Картинка:
+    <h3>Картинка:</h3>
+
     <img
         class="img"
         :src='redactorItem.img'
     />
-    <div>
-      {{ redactorItem.img }}
+      <div class="img_str">{{ redactorItem.img }}</div>
       <input placeholder="Изменить изображание..." v-model='newImg'/>
       <button @click="redactorImg">Изменить</button>
-    </div>
+
 
     <div>
-      <button @click='redactItemTransform'>
+      <button class="btn_add" @click='redactItemTransform'>
         Добавить изменения на сайт
       </button>
 
-      <button @click="deleteItemTransform(redactorItem)">
+      <button class="btn_del" @click="deleteItemTransform(redactorItem)">
         Удалить этот элемент
       </button>
     </div>
   </div>
+</div>
+
 </template>
 
 <script>
@@ -229,11 +233,26 @@ export default {
   left: 20%;
   top: 70%;
   width: 60%;
-  background-color: #999;
-  height: 60%;
+  background-color: rgba(0,0,0,0.8);
+  padding-bottom: 40px;
 }
-
+.wrapper_name{
+  padding-top: 40px;
+}
 .img {
-  height: 50px;
+  height: 70px;
+}
+/*.img_str{*/
+/*  text-overflow: ellipsis;*/
+/*}*/
+.btn_add{
+  margin: 0 auto;
+  display: block;
+  background-color: #64ea14;
+}
+.btn_del{
+  margin: 0 auto;
+  display: block;
+  background-color: #ff0000;
 }
 </style>
