@@ -20,7 +20,7 @@
     </div>
     <button class="item-btn" @click='$emit("closeSearch")'>
       Закрыть
-    </button>
+    </button>shikhov@lpmotor.ru
   </div>
 </template>
 
@@ -43,21 +43,15 @@ export default {
 .wrapper_item {
   padding: 10px;
   margin: 10px;
+  flex: 0 0 186px;
 }
 
 .item__wrapper {
   border-radius: 10px;
-  padding: 10px;
-  flex: 0 0 186px;
+  padding: 15px;
   background-color: #fff;
-  margin: 10px;
   height: 280px;
-}
-
-.item__wrapper {
-
   border: 1px solid #000;
-  padding-top: 15px;
   margin: 0 auto;
   text-align: center;
 }

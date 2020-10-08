@@ -17,7 +17,7 @@
     <SearchFilterItem
         @closeSearch='closeSearch'
         :searchItemArr="searchItemArr"
-        v-if="openSearchPenal === true"
+        v-if="openSearchPenal"
     />
     <SearchNoneItem
         @closeSearch='closeSearch'
